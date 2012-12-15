@@ -1,0 +1,9 @@
+# Sets a random hostname from a wordfile at every shutdown
+# Created for and tested on Debian Sid
+# Written by auraltension 
+#
+# INSTALLATION:
+#'sudo cp hostnamerand.sh /etc/init.d/'
+#'sudo chmod +x /etc/init.d/hostnamerand.sh'
+#'sudo update-rc.d hostnamerand.sh stop 01 0 6'
+# Copy a wordlist to /usr/share/dict/hostnames
