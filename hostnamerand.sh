@@ -33,7 +33,7 @@ case "$1" in
   stop|"")
 	echo $RAND_HOSTNAME > /etc/hostname
 	hostname $RAND_HOSTNAME
-	sed -i 's/'"$CUR_HOSTNAME"'/'"$RAND_HOSTNAME"'/g' /etc/hosts
+	sed -i 's/'"$CUR_HOSTNAME"'/'"$RAND_HOSTNAME"'/' /etc/hosts
 	;;
   restart|reload|force-reload)
 	echo "Error: argument '$1' not supported" >&2
