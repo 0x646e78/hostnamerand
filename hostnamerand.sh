@@ -20,11 +20,13 @@ WORDLIST="/usr/share/dict/hostnames"
 CUR_HOSTNAME=$(hostname)
 RAND_HOSTNAME=$(shuf -n 1 $WORDLIST | sed 's/'"'"'//')
 
-do_status () {
-	HOSTNAME=$(hostname)
+do_status() {
+	local HOSTNAME=$(hostname)
 	if [ "$HOSTNAME" ] ; then
+		printf "Hostname is presently $HOSTNAME\n"
 		return 0
 	else
+		printf "No hostname set!\n"
 		return 4
 	fi
 }
@@ -34,6 +36,7 @@ case "$1" in
 	echo $RAND_HOSTNAME > /etc/hostname
 	hostname $RAND_HOSTNAME
 	sed -i 's/'"$CUR_HOSTNAME"'/'"$RAND_HOSTNAME"'/g' /etc/hosts
+	exit 0
 	;;
   restart|reload|force-reload)
 	echo "Error: argument '$1' not supported" >&2
@@ -41,6 +44,7 @@ case "$1" in
 	;;
   start)
 	# No-op
+	exit 0
 	;;
   status)
 	do_status
